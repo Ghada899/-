@@ -1,0 +1,714 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ندوة "من أداة ذكية إلى شريك عمل" - سكلز بنك</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Same visual system as the Future of Learning Summit frame generator: navy + teal, Barlow, two-panel layout. Arabic runs in Cairo and the card is mirrored for right-to-left reading. */
+  :root {
+    color-scheme: dark;
+    --navy:      rgba(1, 0, 16, 1);
+    --navy-mid:  rgba(9, 20, 50, 1);
+    --navy-2:    rgba(0, 8, 41, 1);
+    --navy-3:    rgba(30, 52, 75, 1);
+    --navy-4:    rgba(33, 61, 83, 1);
+    --teal-bg:   rgba(65, 117, 131, 1);
+    --teal:      #00c9b1;
+    --teal-mid:  #00a896;
+    --teal-deep: #007f72;
+    --white:     #ffffff;
+    --grey:      #8fa8b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--navy);
+    font-family: 'Barlow', 'Cairo', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 0% 100%, rgba(65,117,131,.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 100% 0%, rgba(9,20,50,.5) 0%, transparent 60%);
+    padding-block: 40px 60px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 44px;
+    animation: fadeDown .55s ease both;
+  }
+
+  .site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+  }
+  .logo-mark {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    flex: none;
+  }
+  .logo-mark .sq-back {
+    position: absolute;
+    right: 0; bottom: 0;
+    width: 26px; height: 26px;
+    background: var(--teal);
+  }
+  .logo-mark .sq-front {
+    position: absolute;
+    left: 0; top: 0;
+    width: 26px; height: 26px;
+    background: var(--white);
+  }
+  .logo-text {
+    text-align: start;
+    line-height: 1.3;
+  }
+  .logo-text .top {
+    font-family: 'Barlow Condensed', 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--white);
+  }
+  .logo-text .year {
+    font-family: 'Barlow Condensed', 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: .95rem;
+    color: var(--teal);
+  }
+
+  .header h1 {
+    font-family: 'Barlow Condensed', 'Cairo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.7rem, 4.4vw, 2.7rem);
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  .header h1 span { color: var(--teal); }
+  .header p {
+    margin-top: 10px;
+    color: var(--grey);
+    font-size: .95rem;
+    font-weight: 400;
+  }
+
+  .header p.tagline { color: var(--teal); font-weight: 700; font-size: 1.05rem; margin-top: 12px; }
+
+  .layout {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    max-width: 980px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .form-panel {
+    flex: 1 1 300px;
+    max-width: 340px;
+    min-width: 0;
+    animation: fadeUp .55s .1s ease both;
+  }
+  .form-panel h2, .preview-panel h2 {
+    font-family: 'Barlow Condensed', 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--teal);
+    margin-bottom: 22px;
+  }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--grey);
+    margin-bottom: 7px;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    background: rgba(255,255,255,.05);
+    border: 1.5px solid rgba(255,255,255,.1);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: var(--white);
+    font-family: 'Barlow', 'Cairo', sans-serif;
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .2s, background .2s;
+  }
+  .field textarea { min-height: 210px; resize: vertical; line-height: 1.8; }
+  .field input:focus, .field textarea:focus {
+    border-color: var(--teal);
+    background: rgba(65,117,131,.08);
+  }
+  .field input::placeholder { color: rgba(255,255,255,.28); }
+
+  .photo-upload {
+    width: 100%;
+    background: rgba(255,255,255,.04);
+    border: 2px dashed rgba(65,117,131,.4);
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-upload:hover, .photo-upload:focus-within {
+    border-color: var(--teal);
+    background: rgba(65,117,131,.08);
+  }
+  .photo-upload input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .photo-upload .icon { font-size: 1.9rem; margin-bottom: 7px; }
+  .photo-upload p { font-size: .85rem; color: var(--grey); }
+  .photo-upload p strong { color: var(--teal); }
+
+  .btn-generate {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    background: var(--teal);
+    color: rgba(1, 0, 16, 1);
+    font-family: 'Barlow Condensed', 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    cursor: pointer;
+    transition: transform .15s, background .2s;
+  }
+  .btn-generate:hover { background: #2fd9c2; transform: translateY(-1px); }
+  .btn-generate:active { transform: translateY(0); }
+  .btn-generate[aria-disabled="true"] { opacity: .3; cursor: not-allowed; pointer-events: none; }
+
+  .preview-panel {
+    flex: 1 1 420px;
+    max-width: 470px;
+    min-width: 0;
+    animation: fadeUp .55s .2s ease both;
+  }
+  .preview-panel h2 { margin-bottom: 20px; }
+  .canvas-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 28px 70px rgba(0,0,0,.7), 0 0 0 1px rgba(65,117,131,.2);
+    background: rgba(9, 20, 50, 1);
+  }
+  canvas { display: block; width: 100%; height: auto; max-width: 100%; }
+
+  .btn-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 14px;
+    background: transparent;
+    color: var(--teal);
+    font-family: 'Barlow Condensed', 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border: 2px solid var(--teal);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: background .2s, color .2s, transform .15s;
+  }
+  .btn-download:hover { background: var(--teal); color: rgba(1, 0, 16, 1); transform: translateY(-1px); }
+  .btn-download:disabled { opacity: .3; cursor: not-allowed; transform: none; }
+  .btn-download:disabled:hover { background: transparent; color: var(--teal); }
+
+  .hint {
+    margin-top: 10px;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--grey);
+  }
+  .hint strong { color: var(--white); font-weight: 600; direction: rtl; unicode-bidi: isolate; }
+
+  .post-section { margin-top: 34px; }
+  .post-section h2 { margin-bottom: 14px; }
+  .post-section .field { margin-bottom: 0; }
+  .toast { min-height: 1.6em; margin-top: 8px; text-align: center; font-size: .85rem; font-weight: 600; color: var(--teal); }
+
+  button:focus-visible, a:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header, .form-panel, .preview-panel { animation: none; }
+  }
+
+  @media (max-width: 600px) {
+    body { padding-block: 24px 40px; }
+    .layout { flex-direction: column; }
+    .form-panel, .preview-panel { max-width: 100%; width: 100%; flex-basis: auto; }
+  }
+</style>
+
+<div class="page" dir="rtl" lang="ar">
+
+<div class="header">
+  <div class="site-logo">
+    <div class="logo-mark">
+      <div class="sq-back"></div>
+      <div class="sq-front"></div>
+    </div>
+    <div class="logo-text">
+      <div class="top">سكلز بنك</div>
+      <div class="year">2026</div>
+    </div>
+  </div>
+  <h1>ندوة <span>"من أداة ذكية إلى شريك عمل"</span> - سكلز بنك</h1>
+  <p class="tagline">#من_أداة_ذكية_إلى_شريك_عمل</p>
+  <p>املأ بياناتك ← أنشئ بطاقتك ← شاركها على LinkedIn</p>
+</div>
+
+<div class="layout">
+
+  <div class="form-panel">
+    <h2>بياناتك</h2>
+
+    <div class="field">
+      <label for="inp-name">الاسم</label>
+      <input type="text" id="inp-name" placeholder="مثال: احمد محمد" maxlength="40">
+    </div>
+    <div class="field">
+      <label for="inp-title">المسمى الوظيفي</label>
+      <input type="text" id="inp-title" placeholder="مثال: مصمم تجارب تعلّم" maxlength="70">
+    </div>
+    <div class="field">
+      <label for="inp-company">جهة العمل</label>
+      <input type="text" id="inp-company" placeholder="مثال: سكلز بنك" maxlength="60">
+    </div>
+    <div class="field">
+      <label for="inp-photo">صورتك</label>
+      <div class="photo-upload">
+        <div class="icon">📷</div>
+        <p><strong>اضغط لرفع صورة</strong> أو اسحبها هنا</p>
+        <p>JPG أو PNG، ويفضّل أن تكون مربعة</p>
+        <input type="file" id="inp-photo" accept="image/*">
+      </div>
+    </div>
+
+    <button class="btn-generate" id="btn-gen" type="button">▶ إنشاء بطاقتي</button>
+  </div>
+
+  <div class="preview-panel">
+    <h2>المعاينة</h2>
+    <div class="canvas-wrapper">
+      <canvas id="frame-canvas" width="1080" height="1080" role="img" aria-label="بطاقة المشاركة في ندوة من أداة ذكية إلى شريك عمل"></canvas>
+    </div>
+    <button class="btn-download" id="btn-dl" type="button" disabled>⬇ تحميل الصورة (1080 × 1080)</button>
+    <p class="hint">انشر على LinkedIn وضع الوسوم <strong>#سكلز_بنك #من_أداة_ذكية_إلى_شريك_عمل #الذكاء_الاصطناعي_في_العمل</strong> 🎓</p>
+
+    <div class="post-section">
+      <h2>نص المنشور</h2>
+      <div class="field">
+        <label for="inp-post">يمكنك تعديل النص قبل النشر</label>
+        <textarea id="inp-post"></textarea>
+      </div>
+      <button class="btn-download" id="btn-copy" type="button" disabled>نسخ النص</button>
+      <a class="btn-generate" id="btn-li" href="#" target="_blank" rel="noopener" aria-disabled="true">انشر على LinkedIn</a>
+      <p class="toast" id="toast" role="status" aria-live="polite"></p>
+      <p class="hint">أرفق البطاقة بالمنشور بعد فتح LinkedIn، وأضف إشارة لحساب سكلز بنك بكتابة @ ثم اختيار الحساب.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+/* ===== Settings ===== */
+const EVENT_URL = 'https://www.linkedin.com/events/7507760831267385345/';
+const SKILLS_BANK_TAG = '@سكلز بنك';        // اسم حساب سكلز بنك على LinkedIn
+const SKILLS_BANK_PROFILE_URL = '';          // رابط حساب سكلز بنك (اختياري)
+const HASHTAGS = '#سكلز_بنك #من_أداة_ذكية_إلى_شريك_عمل #الذكاء_الاصطناعي_في_العمل #ويبينار_2026';
+/* ==================== */
+
+let userPhoto = null;
+let frameReady = false;
+let postEdited = false;
+
+const FC = '"Barlow Condensed", "Cairo", sans-serif';
+const FB = '"Barlow", "Cairo", sans-serif';
+
+const C = {
+  darkest:  'rgba(1, 0, 16, 1)',
+  dark2:    'rgba(0, 8, 41, 1)',
+  dark3:    'rgba(9, 20, 50, 1)',
+  mid1:     'rgba(30, 52, 75, 1)',
+  mid2:     'rgba(33, 61, 83, 1)',
+  tealBg:   'rgba(65, 117, 131, 1)',
+  teal:     '#00c9b1',
+  white:    '#ffffff',
+};
+
+const $ = (id) => document.getElementById(id);
+
+function vals() {
+  return {
+    name: $('inp-name').value.trim(),
+    company: $('inp-company').value.trim(),
+    title: $('inp-title').value.trim()
+  };
+}
+function allFilled() { const v = vals(); return !!(v.name && v.company && v.title); }
+
+function liveRender() {
+  if (frameReady) renderFrame();
+  else drawPlaceholder();
+  syncPost();
+}
+
+function buildPost() {
+  const v = vals();
+  const name = v.name || 'الاسم', title = v.title || 'المسمى الوظيفي', company = v.company || 'جهة العمل';
+  const tag = SKILLS_BANK_PROFILE_URL ? 'بتنظيم ' + SKILLS_BANK_TAG + '\n' + SKILLS_BANK_PROFILE_URL : 'بتنظيم ' + SKILLS_BANK_TAG;
+  return 'ندوة "من أداة ذكية إلى شريك عمل" - سكلز بنك\n\n' +
+    'يسعدني مشاركتي في الندوة. أنا ' + name + '، ' + title + ' في ' + company + '.\n\n' +
+    'سجّلوا معنا من هنا:\n' + EVENT_URL + '\n\n' + tag + '\n\n' + HASHTAGS;
+}
+
+function syncPost() {
+  if (!postEdited) $('inp-post').value = buildPost();
+  const ok = frameReady && allFilled();
+  $('btn-copy').disabled = !ok;
+  const li = $('btn-li');
+  li.setAttribute('aria-disabled', ok ? 'false' : 'true');
+  li.href = ok ? 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent($('inp-post').value) : '#';
+}
+
+function say(msg) {
+  const t = $('toast'); t.textContent = msg;
+  clearTimeout(say.t); say.t = setTimeout(() => { t.textContent = ''; }, 4000);
+}
+
+function handlePhoto(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => { userPhoto = img; renderFrame(); };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function renderFrame() {
+  const v = vals();
+  const name = v.name || 'اسمك';
+  const company = v.company || 'جهة العمل';
+  const title = v.title || 'المسمى الوظيفي';
+
+  const canvas = $('frame-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1080, H = 1080;
+  canvas.width = W; canvas.height = H;
+  ctx.direction = 'rtl';
+  const R = W - 56;   // right text edge (card reads right to left)
+
+  /* ── BACKGROUND ── */
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0,    C.darkest);
+  bg.addColorStop(.3,   C.dark3);
+  bg.addColorStop(.7,   C.mid1);
+  bg.addColorStop(1,    C.tealBg);
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  const bloom = ctx.createRadialGradient(W * .05, H * .95, 0, W * .05, H * .95, W * .7);
+  bloom.addColorStop(0,   'rgba(0, 201, 177, .25)');
+  bloom.addColorStop(.4, 'rgba(65, 117, 131, .15)');
+  bloom.addColorStop(1,   'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = bloom;
+  ctx.fillRect(0, 0, W, H);
+
+  /* ── BRAND ── */
+  ctx.fillStyle = C.white;
+  ctx.font = 'bold 42px ' + FC;
+  ctx.textBaseline = 'top';
+  ctx.textAlign = 'right';
+  ctx.fillText('SKILLS BANK', R, 52);
+
+  ctx.strokeStyle = C.teal;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(R - 224, 102);
+  ctx.lineTo(R, 102);
+  ctx.stroke();
+
+  /* Event title */
+  const titleLines = ['من أداة ذكية', 'إلى شريك عمل'];
+  let tz = 84;
+  ctx.font = 'bold ' + tz + 'px ' + FC;
+  while (Math.max(...titleLines.map(l => ctx.measureText(l).width)) > 540 && tz > 40) {
+    tz -= 2; ctx.font = 'bold ' + tz + 'px ' + FC;
+  }
+  const lh = Math.round(tz * 1.3);
+  ctx.fillStyle = C.teal;
+  titleLines.forEach((l, i) => ctx.fillText(l, R, 140 + i * lh));
+
+  ctx.fillStyle = 'rgba(255,255,255,.6)';
+  ctx.font = '500 26px ' + FB;
+  ctx.fillText('ندوة سكلز بنك', R, 140 + titleLines.length * lh + 6);
+
+  /* ── "I AM ATTENDING" TAG ── */
+  const tagW = 330, tagH = 68;
+  const tagX = R - tagW;
+  const tagY = 140 + titleLines.length * lh + 70;
+
+  ctx.save();
+  ctx.fillStyle = 'rgba(0, 201, 177, .2)';
+  roundRect(ctx, tagX, tagY, tagW, tagH, 6);
+  ctx.fill();
+  ctx.strokeStyle = C.teal;
+  ctx.lineWidth = 2;
+  roundRect(ctx, tagX, tagY, tagW, tagH, 6);
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.fillStyle = C.teal;
+  ctx.font = 'bold 32px ' + FC;
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+  ctx.fillText('✦  سأكون حاضرًا', tagX + tagW / 2, tagY + tagH / 2 + 2);
+
+  /* ── NAME ── */
+  const nameStartY = tagY + tagH + 50;
+  const textW = 560;
+  let fz = 80;
+  ctx.font = 'bold ' + fz + 'px ' + FC;
+  while (ctx.measureText(name).width > textW && fz > 44) {
+    fz -= 2;
+    ctx.font = 'bold ' + fz + 'px ' + FC;
+  }
+  ctx.fillStyle = C.white;
+  ctx.textBaseline = 'top';
+  ctx.textAlign = 'right';
+  ctx.fillText(name, R, nameStartY);
+
+  /* Company */
+  const nameH = Math.round(fz * 1.25);
+  ctx.fillStyle = C.teal;
+  ctx.font = '700 32px ' + FB;
+  ctx.fillText(company, R, nameStartY + nameH + 10);
+
+  /* Job title */
+  ctx.fillStyle = 'rgba(255,255,255,.75)';
+  ctx.font = '500 28px ' + FB;
+  const jobLines = wrapTextLines(ctx, title, textW, 28).slice(0, 3);
+  jobLines.forEach((l, i) => ctx.fillText(l, R, nameStartY + nameH + 64 + i * 42));
+
+  /* ── EVENT DETAILS ── */
+  const bottomY = H - 150;
+  ctx.fillStyle = 'rgba(255,255,255,.7)';
+  ctx.font = '600 28px ' + FB;
+  ctx.textBaseline = 'top';
+  ctx.textAlign = 'right';
+  ctx.fillText('🎓 ويبينار 2026', R, bottomY);
+
+  /* ── BOTTOM RULE + FOOTER ── */
+  ctx.strokeStyle = 'rgba(65, 117, 131, .3)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(56, H - 54);
+  ctx.lineTo(W - 56, H - 54);
+  ctx.stroke();
+
+  ctx.fillStyle = 'rgba(255,255,255,.4)';
+  ctx.font = '500 20px ' + FB;
+  ctx.textAlign = 'right';
+  ctx.fillText('#سكلز_بنك  ·  #من_أداة_ذكية_إلى_شريك_عمل  ·  #الذكاء_الاصطناعي_في_العمل', R, H - 42);
+
+  /* ── PHOTO: rounded square on the left ── */
+  const pSize = 370;
+  const pX    = 56;
+  const pY    = 100;
+  const pR    = 20;
+
+  ctx.save();
+  ctx.strokeStyle = C.teal;
+  ctx.lineWidth = 4;
+  roundRect(ctx, pX - 2, pY - 2, pSize + 4, pSize + 4, pR + 2);
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.save();
+  roundRect(ctx, pX, pY, pSize, pSize, pR);
+  ctx.clip();
+
+  if (userPhoto) {
+    const srcAR = userPhoto.width / userPhoto.height;
+    let sw, sh, sx, sy;
+    if (srcAR > 1) {
+      sh = userPhoto.height; sw = sh;
+      sx = (userPhoto.width - sw) / 2; sy = 0;
+    } else {
+      sw = userPhoto.width; sh = sw;
+      sx = 0; sy = (userPhoto.height - sh) / 2;
+    }
+    ctx.drawImage(userPhoto, sx, sy, sw, sh, pX, pY, pSize, pSize);
+  } else {
+    const grad = ctx.createLinearGradient(pX, pY, pX + pSize, pY + pSize);
+    grad.addColorStop(0, 'rgba(65, 117, 131, .4)');
+    grad.addColorStop(1, 'rgba(30, 52, 75, .6)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(pX, pY, pSize, pSize);
+
+    ctx.fillStyle = 'rgba(0,201,177,.35)';
+    ctx.font = '100px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('👤', pX + pSize / 2, pY + pSize / 2);
+  }
+  ctx.restore();
+
+  ctx.save();
+  roundRect(ctx, pX, pY, pSize, pSize, pR);
+  ctx.clip();
+  const photoFade = ctx.createLinearGradient(pX, pY + pSize * .6, pX, pY + pSize);
+  photoFade.addColorStop(0, 'rgba(1,0,16,0)');
+  photoFade.addColorStop(1, 'rgba(1,0,16,.45)');
+  ctx.fillStyle = photoFade;
+  ctx.fillRect(pX, pY, pSize, pSize);
+  ctx.restore();
+
+  frameReady = true;
+  $('btn-dl').disabled = !allFilled();
+  syncPost();
+}
+
+/* ── HELPERS ── */
+function wrapTextLines(ctx, text, maxW) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const test = line + (line ? ' ' : '') + w;
+    if (ctx.measureText(test).width > maxW && line) {
+      lines.push(line);
+      line = w;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+async function downloadFrame() {
+  if (!allFilled()) return;
+  const canvas = $('frame-canvas');
+  const nm = vals().name.replace(/\s+/g, '-') || 'card';
+  const filename = 'SkillsBank-Webinar-' + nm + '.png';
+  const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+  let dl = null;
+  try { dl = window.claude && window.claude.use ? await window.claude.use('downloads') : null; } catch (e) { dl = null; }
+  if (dl) {
+    try { await dl.save({ filename, data: blob }); say('تم حفظ الصورة'); }
+    catch (e) { if (!e || e.code !== 'declined') say('تعذّر الحفظ، اضغط مطولًا على البطاقة لحفظها'); }
+    return;
+  }
+  const a = document.createElement('a');
+  a.download = filename;
+  a.href = URL.createObjectURL(blob);
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+
+function drawPlaceholder() {
+  const canvas = $('frame-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1080, H = 1080;
+  canvas.width = W; canvas.height = H;
+
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0,   C.darkest);
+  bg.addColorStop(.3,  C.dark3);
+  bg.addColorStop(.7,  C.mid1);
+  bg.addColorStop(1,   C.tealBg);
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  const bloom = ctx.createRadialGradient(W * .05, H * .95, 0, W * .05, H * .95, W * .65);
+  bloom.addColorStop(0,  'rgba(0, 201, 177, .2)');
+  bloom.addColorStop(.5, 'rgba(65, 117, 131, .1)');
+  bloom.addColorStop(1,  'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = bloom;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.direction = 'rtl';
+  ctx.fillStyle = 'rgba(65, 117, 131, .8)';
+  ctx.font = 'bold 56px ' + FC;
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+  ctx.fillText('← املأ بياناتك', W / 2, H / 2 - 40);
+  ctx.fillStyle = 'rgba(255,255,255,.35)';
+  ctx.font = '400 30px ' + FB;
+  ctx.fillText('ستظهر بطاقتك هنا', W / 2, H / 2 + 40);
+}
+
+['inp-name', 'inp-company', 'inp-title'].forEach(id => $(id).addEventListener('input', liveRender));
+$('inp-photo').addEventListener('change', handlePhoto);
+$('btn-gen').addEventListener('click', () => { renderFrame(); });
+$('btn-dl').addEventListener('click', downloadFrame);
+$('inp-post').addEventListener('input', () => { postEdited = true; syncPost(); });
+$('btn-li').addEventListener('click', (e) => { if ($('btn-li').getAttribute('aria-disabled') === 'true') e.preventDefault(); });
+$('btn-copy').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText($('inp-post').value); say('تم نسخ نص المنشور'); }
+  catch (e) { $('inp-post').focus(); $('inp-post').select(); say('حدّد النص وانسخه يدويًا'); }
+});
+
+drawPlaceholder();
+syncPost();
+if (document.fonts && document.fonts.load) {
+  Promise.all([
+    document.fonts.load('700 40px "Barlow Condensed"', 'SKILLS BANK'),
+    document.fonts.load('700 40px "Cairo"', 'من أداة ذكية إلى شريك عمل'),
+    document.fonts.load('500 28px "Barlow"', 'Skills'),
+    document.fonts.load('600 28px "Cairo"', 'سكلز بنك')
+  ]).then(() => document.fonts.ready).then(liveRender).catch(liveRender);
+}
+</script>
+
+</body></html>
